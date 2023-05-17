@@ -1,0 +1,6 @@
+train: ../train/images
+val: ../valid/images
+test:
+
+nc: 3
+names: ['license-plate', 'vehicle','face']
