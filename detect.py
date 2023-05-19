@@ -191,7 +191,7 @@ def run(
                           cp = '/content/yolov5/Cropped_Imgs/License'
                           cv2.imwrite(os.path.join(cp, file_name), cropped_image)
 
-                        save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                        #save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
             # Stream results
             im0 = annotator.result()
