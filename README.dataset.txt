@@ -1,6 +1,6 @@
-# License Plates > Augmented License Plates
-https://public.roboflow.ai/object-detection/license-plates-us-eu
+# testingplate > 2023-05-01 12:13am
+https://universe.roboflow.com/iambeginner/testingplate
 
-Provided by [Roboflow](https://roboflow.com)
-License: Public Domain
+Provided by a Roboflow user
+License: CC BY 4.0
 

@@ -1,6 +1,7 @@
-train: ../train/images
-val: ../valid/images
-test:
+names: ['face','license']
 
-nc: 3
-names: ['license-plate', 'vehicle','face']
+nc: 2
+
+test: ../test/images
+train: /content/datasets/testingplate-3/train/images
+val: /content/datasets/testingplate-3/valid/images
