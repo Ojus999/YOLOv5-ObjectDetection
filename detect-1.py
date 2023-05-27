@@ -234,7 +234,7 @@ def run(
                         text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)[0]
                         cv2.putText(im0, text, (xyxy[0], xyxy[1] - text_size[1] - 5),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, thickness=2)            
-                    vid_writer[i].write(im0)
+                vid_writer[i].write(im0)
                 
 
         # Print time (inference-only)
