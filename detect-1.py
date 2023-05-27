@@ -169,10 +169,12 @@ def run(
                         with open(f'{txt_path}.txt', 'a') as f:
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
-                    if save_img or save_crop or view_img:  # Add bbox to image
-
+                    if save_img or save_crop or view_img: # Add bbox to image
                         c = int(cls)  # integer class
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                        if c == 0:
+                          label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                        else:
+                          label = ocr_image(im0,xyxy)                                                
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         x1 = int(xyxy[0].item())
                         y1 = int(xyxy[1].item())
@@ -221,19 +223,7 @@ def run(
                             fps, w, h = 30, im0.shape[1], im0.shape[0]
                         save_path = str(Path(save_path).with_suffix('.mp4'))  # force *.mp4 suffix on results videos
                         vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
-                for *xyxy, conf, cls in reversed(det):
-                      # Add bbox to image
-                      c = int(cls)  # integer class
-                      if c == 1:                      
-                        color = colors(c, True)
-                        xyxy = [int(x) for x in xyxy]
-                        cv2.rectangle(im0, (xyxy[0], xyxy[1]), (xyxy[2], xyxy[3]), color, thickness=2)
-                        # Print text on the bounding box
-                        label = ocr_image(im0,xyxy)
-                        text = f'{label}'
-                        text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)[0]
-                        cv2.putText(im0, text, (xyxy[0], xyxy[1] - text_size[1] - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, thickness=2)            
+                           
                 vid_writer[i].write(im0)
                 
 
